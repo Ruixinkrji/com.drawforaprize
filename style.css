@@ -1,0 +1,184 @@
+/* 全局重置 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  /* 设置背景图片，铺满全屏 */
+  background-image: url('背景图片.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  padding: 2vw;
+  min-height: 100vh;
+}
+
+/* ---------------- 灯笼样式 ---------------- */
+.lantern {
+  position: absolute;
+  width: 12vw;
+  height: 12vw;
+  max-width: 80px;
+  max-height: 80px;
+  background-color: #d9534f;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  animation: lanternSwing 5s ease-in-out infinite;
+  z-index: 3;
+}
+@keyframes lanternSwing {
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+.lantern::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 10px;
+  background: #ffd700;
+}
+.lantern::after {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 5px;
+  background: #ffd700;
+  border-radius: 50%;
+}
+
+/* ---------------- 转盘及按钮区域 ---------------- */
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  width: 80vw;
+  height: 80vw;
+  max-width: 400px;
+  max-height: 400px;
+  margin: 0 auto;
+  z-index: 101;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  background: #fff;
+}
+
+.slice {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  position: absolute;
+  color: #fff;
+  font-weight: bold;
+  font-size: 4vw;
+  white-space: nowrap;
+  transform: rotate(0deg);
+}
+
+/* 指针样式 */
+#pointer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15vw;
+  height: 15vw;
+  max-width: 80px;
+  max-height: 80px;
+  background: #d9534f;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 102;
+  font-size: 3vw;
+}
+
+/* 抽奖按钮 */
+#lotteryBtn {
+  display: block;
+  margin: 2vh auto 0;
+  padding: 1em 2em;
+  font-size: 4vw;
+  color: #fff;
+  background: #d9534f;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 102;
+}
+#lotteryBtn:hover { background: #c12e2a; }
+
+/* 弹窗样式 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 110;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  padding: 5vw;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 4vw;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 2vw;
+  top: 2vw;
+  font-size: 6vw;
+  color: #d9534f;
+  cursor: pointer;
+}
+
+/* 媒体查询（大屏） */
+@media (min-width:600px) {
+  .text { font-size: 16px; }
+  #pointer, #lotteryBtn { font-size: 16px; }
+  .close { font-size: 24px; right: 10px; top: 10px; }
+  .lantern { width: 80px; height: 80px; }
+}
