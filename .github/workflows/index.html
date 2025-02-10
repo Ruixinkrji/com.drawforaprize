@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>瑞凯数动逸轩科技工作室 元宵佳节抽大奖 最高能抽100</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 仅保留页面上方的两个灯笼 -->
+  <div class="lantern" style="top:2%; left:40%; transform: rotate(10deg);"></div>
+  <div class="lantern" style="top:10%; right:20%; transform: rotate(-15deg);"></div>
+  
+  <!-- 中心内容：转盘和抽奖按钮 -->
+  <div class="center-content">
+    <div class="container">
+      <div id="wheel"></div>
+      <div id="pointer">指针</div>
+    </div>
+    <button id="lotteryBtn">立即抽奖</button>
+  </div>
+  
+  <!-- 抽奖结果弹窗 -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="resultText"></p>
+    </div>
+  </div>
+  
+  <!-- 自动播放背景音乐 -->
+  <audio id="bgm" src="背景音乐.mp3" autoplay loop style="display:none;"></audio>
+  
+  <script src="script.js"></script>
+</body>
+</html>
